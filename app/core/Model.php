@@ -13,5 +13,4 @@ Trait Model
     }
 
 
-
 }

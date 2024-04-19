@@ -9,8 +9,6 @@ const VITE_HOST = 'http://localhost:5133';
 // you might check @vitejs/plugin-legacy if you need to support older browsers
 // https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
 
-
-
 // Prints all the html entries needed for Vite
 
 function vite(string $entry): string

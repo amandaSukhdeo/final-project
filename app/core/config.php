@@ -1,5 +1,7 @@
 <?php 
 
+use \app\core\AuthHelper;
+
 if($_SERVER['SERVER_NAME'] == 'localhost')
 {
 	/** database config **/
@@ -8,6 +10,13 @@ if($_SERVER['SERVER_NAME'] == 'localhost')
 	define('DBUSER', $env['DBUSER']);
 	define('DBPASS', $env['DBPASS']);
 	define('DBDRIVER', '');
+
+	/** AWS config  **/
+	define('BUCKETNAME', $env['BUCKETNAME']);
+	define('ACCESSKEY', $env['ACCESSKEY']);
+	define('SECRETKEY', $env['SECRETKEY']);
+	define('REGION', $env['REGION']);
+
 	
 	define('ROOT', 'http://localhost:8888/');
 
@@ -24,6 +33,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost')
 
 }
 
+$session = AuthHelper::checkSession();
 define('APP_NAME', "My Webiste");
 define('APP_DESC', "Best website on the planet");
 
