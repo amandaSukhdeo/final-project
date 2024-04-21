@@ -12,6 +12,7 @@ class MainController extends Controller
         include '../public/assets/views/main/homepage.php';
     }
 
+
     public function usersView()
     {
         include '../public/assets/views/user/users-view.php';

@@ -36,13 +36,23 @@ $routes = [
 
     'posts' => [
         'controller' => PostController::class, 
-        'GET' => 'getPosts'
+        'GET' => 'getPosts',
+        'POST' => 'likePost' 
     ],
 
     'start-campaign' => [
         'controller' => PostController::class, 
-        'GET' => 'startCampaign'
+        'GET' => 'startCampaign',
+        'POST' => 'saveCampaign'
     ],
 
+    'campaigns' => [
+        'controller' => PostController::class, 
+        'GET' => 'getCampaigns'
+    ],
 
+    'events' => [
+        'controller' => PostController::class, 
+        'GET' => 'getEvent'
+    ]
 ];

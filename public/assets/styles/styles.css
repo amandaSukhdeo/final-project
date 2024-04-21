@@ -2,38 +2,33 @@ body {
     margin: 0; 
     padding: 0; 
 }
-
 .error-border {
     border: 3px solid;
     border-color: red; 
 }
-
 .container {
     display: flex; 
     flex-wrap: wrap; 
     height: 100vh; 
-    overflow-y: scroll; 
+    /* overflow-y: scroll;  */
 }
-
 .break {
     flex-basis: 100%; 
     height: 0; 
 }
-
 .nav {
     display: flex;
     flex-direction: row; 
+    position:fixed; 
     width: 100%; 
     height:50px; 
     background-color: white; 
 }
-
 #logo {
     display: flex; 
     justify-content: center ;
     min-width: 200px; 
 }
-
 #my-logo {
     display: flex; 
     justify-content: center;
@@ -42,16 +37,13 @@ body {
     border-radius: 25px;
     margin: 5px 50px 5px 50px; 
 }
-
 #my-logo p {
     margin-top: 10px;
     color: white; 
 }
-
 #login {
     width: 200px; 
 }
-
 #search-div {
     display: flex; 
     justify-content: center; 
@@ -59,7 +51,6 @@ body {
     gap: 20px; 
     flex-grow: 1; 
 }
-
 .search-bar {
     background-color: #97A97C;
     position: relative; 
@@ -68,7 +59,6 @@ body {
     margin: 5px 50px 5px 50px; 
     border-radius: 25px; 
 }
-
 input {
     margin-left: 35px; 
     margin-right: 35px; 
@@ -77,22 +67,19 @@ input {
     border: 0px; 
     outline: none; 
     color: white; 
-    padding: 10px; 
+    padding: 10px 5px; 
 }
-
-
 ::placeholder{
     color:white; 
     font-size: 15px;   
+    margin-left:5px; 
 }
-
 .search-icon {
     position: absolute;
     top: 12px;
     left: 10px;
     width: 14px;
 }
-
 .clear-icon {
     position: absolute;
     top: 13px;
@@ -100,8 +87,7 @@ input {
     width: 12px;
     cursor: pointer;
     visibility: hidden; 
-  }
-
+}
 #signup-login-div {
     display:flex;
 }
@@ -113,7 +99,6 @@ input {
     margin: 5px 10px; 
     border-radius: 25px;     
 }
-
 .sign-up-div {
     background-color: #97A97C;
     display:flex; 
@@ -122,7 +107,6 @@ input {
     margin: 5px 10px; 
     border-radius: 25px; 
 }
-
 .nav-btn {
     background-color: #718355;
     color: white; 
@@ -132,67 +116,81 @@ input {
     box-sizing: border-box;
     border-radius: 25px; 
 }
-
+.nav-btn:hover {
+    background-color: #CFE1B9;
+    color: black; 
+}
 .main {
     display: flex; 
-    flex-direction: row;
-    gap:10px; 
+    justify-content: space-between;
+    width:100%; 
     background-color:#adb5bd; 
-    width: 100%; 
-    height: 100vh;
-    overflow-y: auto; 
-
 }
-
 .left-column-container {
-    display: flex;
-    flex-direction: column;
-    width:250px;
-    min-width: 150px;  
+    position: fixed; 
+    top: 50px;
+    bottom: 0; 
+    left: 0; 
+    overflow-y:auto; 
+    width:280px; 
     gap: 30px; 
 }
-
 .left-item {
     display:flex; 
     flex-direction: column;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     background-color: white;
     border-radius: 15px; 
     height: 200px; 
     margin: 10px; 
 }
-
 .left-item-title {
     display:flex; 
     justify-content: center;
 }
-
 .item-title h4 {
     text-align: center;
     font-family:  "Sedan", serif; 
     font-weight: bold; 
-    font-size: 1.2rem; 
+    font-size: 1.3rem; 
+    margin-bottom: 10px; 
+    margin-top:15px; 
 }
-
-.center-column {
+.nearby-communities{
     display: flex; 
-    flex-direction: column;
-    flex-grow: 1; 
-    width: 560px; 
-    gap: 1rem; 
+    flex-direction: row; 
+    justify-content: center;
+    gap: 15px; 
+    margin-top: 15px; 
 }
-
+.nearby-comm-btn{
+    background-color: #49624b; 
+    color: white; 
+    border: 0px; 
+    border-radius: 25px; 
+    height: 30px; 
+    width: 100px; 
+}
+.nearby-comm-btn:hover{
+    background-color: #CFE1B9;
+    color: black; 
+}
+.center-column {
+    display:flex;
+    flex-direction: column;
+    margin-left: 280px; /* Same as left column width */
+    margin-top: 50px; 
+    margin-right: 320px; /* Same as right column width */
+}
 .post {
     display: flex; 
     flex-direction: column; 
     background-color: white;
-    height:2000px;  
     border-radius: 15px; 
     margin: 10px; 
     padding: 10px 20px; 
 
 }
-
 #post-header {
     display: flex; 
     flex-direction: row;
@@ -216,7 +214,7 @@ h5{
 }
 
 #borough-button{
-    background-color: #87986A;
+    background-color: #49624b;
     color: white; 
     border: 0px; 
     border-radius: 25px; 
@@ -237,6 +235,11 @@ h5{
 }
 
 .post-control-btn {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
     background-color: #87986A; 
     color: white; 
     border: 0px; 
@@ -251,7 +254,7 @@ h5{
 }
 
 #post-descr-span p{
-    width: 595px; 
+    width: 500px; 
     margin: 10px 0px; 
 }
 
@@ -269,11 +272,12 @@ img#post-image {
 
 
 .right-column-container {
-    display: flex; 
-    flex-direction: column; 
-    width: 300px; 
-    min-width: 150px; 
-    height: 100vh; 
+    width:320px; 
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    right: 0;
+    overflow-y:auto; 
 }
 
 .right-item {
@@ -284,17 +288,87 @@ img#post-image {
     height: 100vh; 
 }
 
+#campaigns-container {
+    display: flex; 
+    flex-direction: column;
+    flex-grow: 1; 
+    height: 100vh; 
+    overflow-y:auto; 
+}
+
+#campaigns {
+    display: flex; 
+    flex-direction: column;
+    gap:10px;
+    margin: 0px 10px;
+}
+
+.campaign {
+    display: flex; 
+    flex-direction: column;
+    /* border-top: 1px solid black; */
+    border: 1px solid black;
+    background-color: #B5C99A;
+    border-radius: 20px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+}
+
+#campaign-header {
+    display: flex; 
+    flex-direction: row;
+    gap: 15px; 
+    margin-bottom: 10px;
+}
+
+h5#camp-title{
+    display:flex; 
+    justify-content: center; 
+}
+
+.camp-img-span {
+    display:flex; 
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+img#campaign-image {
+    width: 220px; 
+    height: 150px; 
+    border-radius: 10px; 
+}
+
+.campaign-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 8px; 
+}
+
+.camp-control-btn {
+    background-color: #718355; 
+    color: white; 
+    border: 0px; 
+    border-radius: 25px; 
+    height: 24px; 
+    width: 90px; 
+}
+
+.camp-control-btn:hover {
+    background-color: #CFE1B9;
+    color: black; 
+}
+
 #userAdd {
     display: flex; 
     flex-direction: column;
-    height: 200px; 
+    height: 220px; 
 }
 
 .userfunc {
-    /* background-color: pink; */
     display: flex; 
     flex-direction: column;
-    margin: 0px 50px 20px 50px;
+    margin: 10px 50px 20px 50px;
     gap: 10px;
 }
 
@@ -320,13 +394,43 @@ img#post-image {
     border: none;
 }
 
+#create-post-btn:hover {
+    background-color: #CFE1B9;
+    color: black; 
+}
+
 #start-camp-btn {
     width: 100%;
     height:40px;
-    background-color: blue;
+    background-color: #49624b;
     border-radius: 25px; 
     color: white; 
     border: none;
+}
+
+#start-camp-btn:hover {
+    background-color: #CFE1B9;
+    color: black; 
+}
+
+#share-event {
+    display:flex; 
+    justify-content: center;
+    width: 100%;
+}
+
+#share-event-btn{
+    width: 100%; 
+    height: 40px;
+    background-color: #718355;
+    border-radius: 40px;
+    color: white; 
+    border: none;
+}
+
+#share-event-btn:hover {
+    background-color: #CFE1B9;
+    color: black; 
 }
 
 #campaign-title {
@@ -334,17 +438,12 @@ img#post-image {
     justify-content: center;
 }
 
-#campaign-title h4 {
-    text-align: center;
-    font-family: "Sedan", serif; 
-    font-size: 1.2rem; 
-}
-
 /* signup page styling */
 .signup-main {
-    background-color: #ededed;
+    background-color: #adb5bd;
     display:flex; 
     justify-content: center;
+    margin-top:50px; 
     width:100%; 
     height: 100vh; 
 }
@@ -354,7 +453,7 @@ img#post-image {
     flex-direction: column;
     margin: 20px; 
     width: 400px; 
-    min-height: 650px; 
+    height: 800px; 
     flex-grow: 0.5;
     background-color: white; 
     border-radius: 25px;
@@ -376,7 +475,6 @@ img#post-image {
 }
 
 .sign-up-form {
-    /* background-color: pink; */
     display: flex; 
     /* flex-direction: column; */
     justify-content: center;
@@ -387,7 +485,7 @@ img#post-image {
 }
 
 form input:focus {
-    outline: 1px solid blue; 
+    outline: 1px solid black; 
 }
 
 #signup-form input {
@@ -396,20 +494,18 @@ form input:focus {
     height: 30px; 
     margin-bottom: 20px;
     border-radius: 20px; 
-    padding: 20px 0px;
+    padding: 20px 5px;
 }
 
 #signup-btn-submit{
     display: flex; 
-    /* background-color: blue; */
     justify-content: center;
     height: 40px; 
-    /* margin-top: 15px;  */
 }
 
 #signup-form button {
     color: white; 
-    background-color: grey; 
+    background-color: #718355; 
     height: 40px; 
     border-radius:25px;
     width: 200px; 
@@ -417,12 +513,18 @@ form input:focus {
     margin: 20px; 
     padding: 10px; 
 }
-/* login page styling */
 
+#signup-form button:hover{
+    background-color: #CFE1B9;
+    color: black; 
+}
+
+/* login page styling */
 .login-main {
-    background-color: #ededed;
+    background-color: #adb5bd;
     display:flex; 
     justify-content: center;
+    margin-top:50px; 
     width:100%; 
     height: 100vh; 
 }
@@ -432,7 +534,7 @@ form input:focus {
     flex-direction: column;
     margin: 20px; 
     width: 400px; 
-    min-height: 650px; 
+    height: 800px; 
     flex-grow: 0.5;
     background-color: white; 
     border-radius: 25px; 
@@ -475,7 +577,7 @@ form input:focus {
     height: 30px; 
     margin-bottom: 20px;
     border-radius: 20px; 
-    padding: 20px 0px;; 
+    padding: 20px 5px;; 
 }
 
 #login-btn-submit {
@@ -487,7 +589,7 @@ form input:focus {
 
 #login-form button {
     color: white; 
-    background-color: grey; 
+    background-color: #718355; 
     height: 40px; 
     border-radius:25px;
     width: 200px; 
@@ -496,13 +598,119 @@ form input:focus {
     padding: 10px; 
 }
 
-/* add post styling */
+#login-form button:hover{
+    background-color: #CFE1B9;
+    color: black; 
+}
 
-.add-post-main {
-    background-color: #ededed;
+
+/*campaign styling */
+.campaign-main {
+    background-color: #adb5bd;
     display:flex; 
     justify-content: center;
     width:100%; 
+    margin-top: 50px; 
+    height: 100vh;
+}
+
+.campaign-container {
+    display:flex; 
+    flex-direction: column;
+    margin: 20px; 
+    width: 400px; 
+    height: 800px; 
+    flex-grow: 0.5;
+    background-color: white; 
+    border-radius: 25px; 
+}
+
+.campaign-message {
+    display: flex; 
+    justify-content: center;
+    flex-direction: column; 
+}
+
+.campaign-message h1{
+    text-align: center; 
+    font-size: 3rem; 
+    margin-bottom: 5px;
+}
+
+.campaign-message h3{
+    text-align: center;
+    font-size: 1.2rem; 
+}
+
+.campaign-form-div {
+    display: flex; 
+    justify-content: center;
+}
+
+#campaign-form {
+    width: 75%;
+}
+
+#campaign-form label { 
+    font-size: 1.2rem; 
+}
+
+#campaign-form input {
+    margin-left: 0px; 
+    width:100%; 
+    height: 30px; 
+    margin-bottom: 20px;
+    border-radius: 20px; 
+    padding: 20px 5px; 
+    margin-right: 0px; 
+    margin-top: 10px; 
+}
+
+#campaign-form .borough-choice input {
+    margin-right: 0px;
+    height: 20px;  
+    width: 20px; 
+}
+
+#campdesc-input {
+    background-color: #97A97C;
+    border-radius: 15px; 
+    color: white; 
+    width: 100%; 
+    padding: 20px 5px;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+#camp-btn-submit {
+    display: flex; 
+    justify-content: center;
+}
+
+#campaignbtn {
+    color: white; 
+    background-color: #718355; 
+    height: 40px; 
+    border-radius:25px;
+    width: 200px; 
+    border: 0; 
+    margin: 20px; 
+    padding: 10px; 
+}
+
+#campaignbtn:hover {
+    background-color: #CFE1B9;
+    color: black; 
+}
+
+/* add post styling */
+
+.add-post-main {
+    background-color: #adb5bd;
+    display:flex; 
+    justify-content: center;
+    width:100%; 
+    margin-top: 50px; 
     height: 100vh; 
 }
 
@@ -511,7 +719,7 @@ form input:focus {
     flex-direction: column;
     margin: 20px; 
     width: 400px; 
-    min-height: 650px; 
+    height: 800px; 
     flex-grow: 0.5;
     background-color: white; 
     border-radius: 25px; 
@@ -553,7 +761,7 @@ form input:focus {
     height: 30px; 
     margin-bottom: 20px;
     border-radius: 20px; 
-    padding: 20px 0px; 
+    padding: 20px 5px; 
     margin-right: 0px; 
     margin-top: 10px; 
 }
@@ -563,6 +771,7 @@ form input:focus {
     display: flex; 
     flex-direction: row; 
     justify-content: center;
+    align-items: center;
     gap: 10px; 
     margin: 20px 0px; 
     height: 40px; 
@@ -587,14 +796,37 @@ input[type="radio"] {
     border-radius: 15px; 
     color: white; 
     width: 100%; 
+    padding: 20px 5px;
     margin-top: 10px; 
     margin-bottom: 10px; 
-    /* padding: 10px;  */
 }
 
-
-input#formFile {
-    margin-top: 10px; 
-    height: 20px; 
+input#userfile {
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 10px;  */
+    height: 15px; 
+    padding-top: 15px; 
 }
 
+#post-btn-submit {
+    display: flex; 
+    justify-content: center;
+}
+
+#addpostbtn {
+    color: white; 
+    background-color: #718355; 
+    height: 40px; 
+    border-radius:25px;
+    width: 200px; 
+    border: 0; 
+    margin: 20px; 
+    padding: 10px; 
+}
+
+#addpostbtn:hover {
+    background-color: #CFE1B9;
+    color: black; 
+}

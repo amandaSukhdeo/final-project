@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-//using the database class namespace
 use app\core\Database;
 
 class User
@@ -26,18 +25,18 @@ class User
 
     public function getUserByID($id) {
         $query = "select usersId, usersName, usersUid, usersEmail, sessionExpiration from users where usersId = :id;";                         // SQL to get member data
-        $user = $this->queryWithParams($query, ['id' => $id]);    // Run SQL
-        if (!$user) {                                          // If no member found
-            return false;                                        // Return false
+        $user = $this->queryWithParams($query, ['id' => $id]);    
+        if (!$user) {                                          
+            return false;                                      
         }
         return $user[0];
     }
 
     public function getUserByUsername($username) {
-        $query = "select usersId from users where usersUid = :username;";                         // SQL to get member data
-        $user = $this->queryWithParams($query, ['username' => $username]);    // Run SQL
-        if (!$user) {                                          // If no member found
-            return false;                                        // Return false
+        $query = "select usersId from users where usersUid = :username;";                         
+        $user = $this->queryWithParams($query, ['username' => $username]);    
+        if (!$user) {                                          
+            return false;                                        
         }
         return $user[0];
     }
@@ -56,8 +55,8 @@ class User
     public function login($inputData) {
         $query = "select usersId, usersUid, usersPwd from users where usersUid = :username;";                         
         $member = $this->queryWithParams($query, [':username' => $inputData['username']]);    
-        if (!$member) {                                          // If no member found
-            return false;                                        // return false 
+        if (!$member) {                                          
+            return false;                                        
         }
 
         $authenticated = password_verify($inputData['password'], $member[0]['usersPwd']); // Passwords match?

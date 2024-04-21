@@ -23,7 +23,7 @@
             <!-- logo -->
             <div class="nav-item" id="logo">
                 <div id="my-logo">
-                    <p>Logo</p>
+                    <button id="my-logo-btn" class="nav-btn">Logo</button>
                 </div>
             </div>
 
@@ -58,13 +58,19 @@
 
         <div class="break"></div>
 <script>
+    $(document).ready(function() {
+            $("#my-logo-btn").click(function() {
+                window.location.href = 'http://localhost:8888/';
+            });
+        });
+
      $(document).ready(function() {
             $("#my-acc-button").click(function() {
                 window.location.href = 'http://localhost:8888/my-account';
             });
         });
 
-        $(document).ready(function() {
+    $(document).ready(function() {
             $("#log-out-btn").click(function() {
                 window.location.href = 'http://localhost:8888/logout';
             });
