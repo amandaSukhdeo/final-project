@@ -51,8 +51,13 @@ $routes = [
         'GET' => 'getCampaigns'
     ],
 
+    'share-event' => [
+        'controller' => PostController::class, 
+        'GET' => 'shareEvent',
+        'POST' => 'saveEvent'
+    ],
     'events' => [
         'controller' => PostController::class, 
-        'GET' => 'getEvent'
+        'GET' => 'getEvent',
     ]
 ];

@@ -319,4 +319,128 @@ class PostController extends Controller
         }
 
     }
+
+    public function shareEvent() {
+        include '../public/assets/views/posts/share-event.php';
+    }
+
+    public function saveEvent() {
+        $errors = []; 
+        $s3FileLink = null;
+
+        $bucketName = BUCKETNAME;
+        $accessKey = ACCESSKEY;
+        $secretKey = SECRETKEY;
+        $region = REGION;
+
+        // Instantiate S3 client
+        $s3 = new S3Client([
+            'version' => 'latest',
+            'region'  => $region,
+            'credentials' => [
+                'key'    => $accessKey,
+                'secret' => $secretKey,
+            ],
+        ]);
+
+        // File handling
+        if (isset($_FILES['userfile'])) {
+            $file = $_FILES['userfile'];
+
+
+            // File details
+            $fileName = $file['name'];
+            $fileTmpName = $file['tmp_name'];
+
+            // Specify the target location for file 
+            $targetPath = 'uploads/' . basename($fileName);
+
+            try {
+                // Upload file to S3
+                $result = $s3->putObject([
+                    'Bucket' => $bucketName,
+                    'Key'    => $targetPath,
+                    'Body'   => fopen($fileTmpName, 'rb'),
+                    'ACL'    => 'public-read', 
+                ]);
+
+                // Get the public URL of the uploaded file
+                $s3FileLink = $result['ObjectURL'];
+
+            } catch (S3Exception $e) {
+                $statusMsg = "Error uploading file: " . $e->getMessage();
+                $errors['fileError'] = $statusMsg; 
+            }
+        }
+
+        // handle remaining post data 
+        $name = $_POST['event-name'];
+        $orgName = $_POST['org-name'];
+        $description = $_POST['description'];
+        $date = $_POST['date'];
+        $time = $_POST['event-time'];
+        $location = $_POST['event-location'];
+
+        if ($name) {
+            $name = htmlspecialchars($name, ENT_QUOTES|ENT_HTML5, 'UTF-8', true);
+            if (strlen($name) < 1) {
+                $errors['nameShort'] = 'name is too short';
+            }
+        } else {
+            $errors['requiredName'] = 'name is required';
+        }
+
+        if ($orgName) {
+            $orgName = htmlspecialchars($orgName, ENT_QUOTES|ENT_HTML5, 'UTF-8', true);
+            if (strlen($orgName) < 1) {
+                $errors['nameShort'] = 'name is too short';
+            }
+        } else {
+            $errors['requiredName'] = 'name is required';
+        }
+
+        if(!isset($_POST['borough'])){ 
+            $errors['boroughRequired'] = "borough required"; 
+        } 
+        else {
+            $borough = $_POST['borough'];
+        }
+
+        if ($description) {
+            $description = htmlspecialchars($description, ENT_QUOTES|ENT_HTML5, 'UTF-8', true);
+            if (strlen($description) < 2) {
+                $errors['descriptionShort'] = 'description is too short';
+            }
+        } else {
+            $errors['requiredDescription'] = 'description is required';
+        }
+
+        if (count($errors)) {
+            http_response_code(400);
+            echo json_encode($errors);
+            exit();
+        }
+        
+
+        $event = new Event(); 
+        $event->saveEvent(
+            [   
+                'name' => $name,
+                'orgName' => $orgName,
+                'description' => $description,
+                'date' => $date,
+                'time' => $time, 
+                'location' => $location,
+                'borough' => $borough,
+                'imageLink' => $s3FileLink,
+            ]
+        );
+
+        http_response_code(200);
+        echo json_encode([
+            'route' => '/'
+        ]);
+        exit();
+    }
+    
 }

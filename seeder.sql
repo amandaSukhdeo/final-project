@@ -47,15 +47,14 @@ CREATE TABLE `PostLikes` (
 
 create table Events (
     eventId INT AUTO_INCREMENT PRIMARY KEY,
-    orgId int(11) NOT NULL,
     title varchar(256) NOT NULL, 
+    orgName varchar(256) NOT NULL, 
     descr varchar(1000) NOT NULL,
     eventDate DATE NOT NULL,
     eventTime TIME NOT NULL,
     eventLocation varchar(1000) NOT NULL,
     borough varchar(128),
     primary key(eventId),
-    foreign key (orgId) references campaign(campId)
 );
 
 INSERT INTO `Events`(`orgId`, `title`, `descr`, `eventDate`, `eventTime`, `eventLocation`, `borough`)
